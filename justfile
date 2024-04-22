@@ -5,8 +5,12 @@ default:
 
 # Build a release binary
 build:
-  cargo build --release
-  ls -lh {{binary}}
+  #!/usr/bin/env bash
+  set -eu 
+  echo "Building..."
+  cargo build -q --release
+  size=$(du -b {{binary}} | cut -f1)
+  echo "Finished. Binary is $size bytes."
 
 # Upload the binary (using scp) to the specified server
 upload server: build
