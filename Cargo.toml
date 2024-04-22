@@ -1,0 +1,17 @@
+[package]
+name = "hello-armv5"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+axum = { version = "0.7.5", features = ["macros"] }
+tokio = { version = "1.37.0", features = ["full"] }
+
+# https://github.com/johnthagen/min-sized-rust/blob/main/Cargo.toml
+[profile.release]
+opt-level = "z"     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = "abort"     # Abort on panic
+strip = true        # Automatically strip symbols from the binary.

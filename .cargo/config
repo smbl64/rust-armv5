@@ -1,0 +1,7 @@
+[build]
+# Default target
+target = "armv5te-unknown-linux-musleabi"
+
+[target.armv5te-unknown-linux-musleabi]
+linker = "arm-linux-gnueabihf-ld"
+ar = "arm-linux-gnueabihf-ar"
